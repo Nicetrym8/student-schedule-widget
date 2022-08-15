@@ -9,7 +9,7 @@
 
 }
 .bracket{
-  font-size: 90px
+  font-size: 64px
 }
 .divider{
   height: 2px;
@@ -61,6 +61,20 @@
 .control-button{
   margin-left: var(--titlebar-close-margin);
   margin-right: var(--titlebar-close-margin);
+}
+.schedule-container{
+  margin-top: 10px;
+  margin-left: 10px;
+  display:flex;
+  flex-direction: row;
+  justify-items: center;
+}
+.schedule{
+  margin-top: 20px;
+  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: 25px;
 }
 
 
