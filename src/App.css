@@ -1,0 +1,67 @@
+:root{
+  --bg-color: transparent;
+  --primary-color: #7fffd4;
+}
+.info{
+  margin-left:10px;
+  display: flex;
+  flex-direction: column;
+
+}
+.bracket{
+  font-size: 90px
+}
+.divider{
+  height: 2px;
+  width: calc(100% - 20px);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--primary-color);
+}
+.logo-container{
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+.App-header {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: var(--primary-color);
+}
+.titlebar {
+  height: 25px;
+  background-color: transparent;
+  user-select: none;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.titlebar-button {
+  --titlebar-close-margin: 5px;
+  color: var(--primary-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 24px;
+}
+.titlebar-button:hover{
+    --titlebar-close-margin: 0px;
+}
+.control-button{
+  margin-left: var(--titlebar-close-margin);
+  margin-right: var(--titlebar-close-margin);
+}
+
+
+
