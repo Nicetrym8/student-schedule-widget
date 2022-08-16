@@ -2,7 +2,7 @@ import { appWindow } from '@tauri-apps/api/window'
 import Icon from '@mdi/react';
 import {mdiClose} from "@mdi/js"
 function TitleBar() {
-    return ( <div data-tauri-drag-region class="titlebar">
+    return ( <div data-tauri-drag-region className="titlebar">
     <div onClick={()=>{
         appWindow.minimize();
     }} className="titlebar-button">

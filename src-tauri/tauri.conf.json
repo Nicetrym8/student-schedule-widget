@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.bsuir.student",
+      "identifier": "com.bsuir.widget",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
