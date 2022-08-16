@@ -32,8 +32,7 @@ function App() {
    // document.documentElement.style.setProperty('--primary-color', 'blue');
     
   }, [settings.groupName]);
-  let schedule = JSON.parse(localStorage.getItem("schedule"));
-  console.log(schedule.startDate);
+  const schedule = JSON.parse(localStorage.getItem("schedule"));
   return (
     
       <div className="App">
