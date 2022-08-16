@@ -11,6 +11,9 @@
     "version": "0.1.0"
   },
   "tauri": {
+    "systemTray":{
+      "iconPath": "icons/icon.ico"
+    },
     "allowlist": {
       "all": true
     },
@@ -60,7 +63,7 @@
         "fullscreen": false,
         "height": 240,
         "resizable": false,
-        "title": "Tauri App",
+        "title": "Расписание на сегодня",
         "width": 560
       }
     ]

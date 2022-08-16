@@ -49,12 +49,12 @@ function App() {
   
   return (
     
-      <div className="App">
-        <header className="App-header">
+      <div className="App reveal">
+        <header className="App-header ">
           <TitleBar />
           <Head settings={settings} setSettingsMode={setSettingsMode} settingsMode={settingsMode}/>
           <div className="divider"/>
-            {settingsMode ? <Body schedule={schedule} currentWeek={currentWeek}/> : <Settings/>}
+          {!settingsMode ? <Body  schedule={schedule} currentWeek={currentWeek}/> : <Settings/>}
         </header>
       </div>
   );
