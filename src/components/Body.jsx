@@ -1,26 +1,25 @@
 import moment from "moment";
-
-function Body(props) {
-    const weekdays=[
-        "Понедельник","Вторник", "Среда", "Четверг","Пятница","Суббота","Воскресенье"
-    ];
-    const date = moment(new Date())
-    const startDate = moment(props.schedule.startDate,"DD.MM.YYYY").unix()
-    const endDate = moment(props.schedule.endDate,"DD.MM.YYYY").unix()
-    //console.log(props.schedule.schedules[weekdays[date.weekday()-1]]);
-    if(false/*endDate < date.unix() < startDate */)
+import {date,settings} from "../constants"
+function Body({schedule, currentWeek}) {
+    const startDate = moment(schedule.startDate,"DD.MM.YYYY").unix();
+    const endDate = moment(schedule.endDate,"DD.MM.YYYY").unix();
+    if(false/*endDate < date.time.unix() < startDate */)
     return ( <div className="schedule">
-        Начало занятий {props.schedule.startDate}
+        Начало занятий {schedule.startDate}
     </div>)
+    console.log(schedule.schedules[date.weekdays[date.time.weekday()-1]])
     return (   <div className='schedule'>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
-    <div>ОАИП(ЛК) 9:00-10:35</div>
+      {schedule.schedules[date.weekdays[date.time.weekday()-1]].map(lesson=>{
+        if(lesson.weekNumber.includes(currentWeek)){
+          return (<div className="lesson_formmat">
+            <span>{lesson.subject}</span>
+            <span style={{
+              color: settings.lessonTypeColors[lesson.lessonTypeAbbrev]
+            }}> ({lesson.lessonTypeAbbrev})</span>
+            <span> {`${lesson.startLessonTime} - ${lesson.endLessonTime}`}</span>
+            </div> );
+        }
+  })}
   </div> );
 }
 

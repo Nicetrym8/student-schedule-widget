@@ -4,18 +4,21 @@ import Head from './components/Head'
 import Body from './components/Body'
 import {useEffect, useRef} from 'react'
 import axios from 'axios';
-
+import {settings} from "./constants"
 function App() {
-  const settings={
-    groupName:'150502',
-    primaryColor: '#7fffd4',
-}
+ 
+
   let schedule = useRef(JSON.parse(localStorage.getItem("schedule")));
+  let currentWeek = useRef();
   useEffect(() => {
     if(localStorage.getItem("groupName") !== settings.groupName) { 
       localStorage.clear();
       localStorage.setItem("groupName",settings.groupName)
     }
+    axios.get("https://iis.bsuir.by/api/v1/schedule/current-week").then((res)=>{
+      currentWeek.current = res.data;
+    }
+    );
     axios.get(
     "https://iis.bsuir.by/api/v1/last-update-date/student-group?groupNumber=" + settings.groupName).then(res=>{
        const date = localStorage.getItem("updateDate");
@@ -44,7 +47,7 @@ function App() {
           <TitleBar />
           <Head settings={settings}/>
           <div className="divider"/>
-          <Body schedule={schedule}/>
+          <Body schedule={schedule.current} currentWeek={currentWeek.current}/>
         </header>
       </div>
   );
