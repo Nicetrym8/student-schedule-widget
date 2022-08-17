@@ -9,10 +9,9 @@ import {defaultSettings}from "./constants";
 
 
 function App() {
-  
-  const [currentWeek,setCurrentWeek] = useState();
-  const [schedule,setSchedule] = useState(JSON.parse(localStorage.getItem("schedule")));
+  const [currentWeek,setCurrentWeek] = useState(1);
   const [settingsMode,setSettingsMode] = useState(0);
+  const [schedule,setSchedule] = useState(JSON.parse(localStorage.getItem("schedule")));
   const [settings, setSettings] = useState(JSON.parse(localStorage.getItem("settings")));
   useEffect(() => {
     if(settings !== null){
@@ -21,21 +20,20 @@ function App() {
       axios.get(
         "https://iis.bsuir.by/api/v1/last-update-date/student-group?groupNumber=" + settings.groupName).then(res=>{
            const date = localStorage.getItem("updateDate");
-           axios.get("https://iis.bsuir.by/api/v1/schedule/current-week").then((res)=>{
+           axios.get("https://iis.bsuir.by/api/v1/schedule/current-week").then((res)=>setCurrentWeek(()=>{
             localStorage.setItem("currentWeek", res.data);
-            setCurrentWeek(res.data);
-          }).catch(()=>{
+           return res.data})).catch(()=>{
             setCurrentWeek(localStorage.getItem("currentWeek"));
           });
            if(date !== res.data.lastUpdateDate){
             
             localStorage.setItem("updateDate",res.data.lastUpdateDate);
             axios.get("https://iis.bsuir.by/api/v1/schedule?studentGroup=" + settings.groupName).then(res=>{
-              setSchedule(()=>{
-                const stringData = JSON.stringify(res.data);
-                localStorage.setItem("schedule",stringData);
-                return res.data;
-              });
+                setSchedule(()=>{
+                  const stringData = JSON.stringify(res.data);
+                  localStorage.setItem("schedule",stringData);
+                  return res.data;
+                });
             }).catch(()=>
               setSettingsMode(1)
             );
@@ -46,8 +44,7 @@ function App() {
     else {
     
       setSettings(()=>{
-        const stringData = JSON.stringify(defaultSettings);
-        localStorage.setItem("settings",stringData); 
+        localStorage.setItem("settings",JSON.stringify(defaultSettings)); 
         return defaultSettings;
       });
       setSettingsMode(1);
@@ -61,7 +58,7 @@ function App() {
           <TitleBar />
           <Head settings={settings} setSettingsMode={setSettingsMode} settingsMode={settingsMode}/>
           <div className="divider"/>
-          {!settingsMode ? <Body settings={settings}  schedule={schedule} currentWeek={currentWeek}/> : <Settings settings={settings} setSettings={setSettings}/>}
+          {!settingsMode ? <Body settings={settings}  schedule={schedule} currentWeek={currentWeek}/> : <Settings settings={settings} setSettings={setSettings} setSchedule={setSchedule}/>}
         </header>
       </div>
   );

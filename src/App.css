@@ -8,6 +8,13 @@
   flex-direction: column;
 
 }
+.logo{
+  transition: all 0.2s;
+}
+.logo:hover{
+  transform: scale(1.1);
+  transition: all 0.2s;
+}
 .bracket{
   font-size: 64px
 }
@@ -47,6 +54,7 @@
   right: 0;
 }
 .titlebar-button {
+  --titlebar-rotation: 0deg;
   --titlebar-close-margin: 5px;
   color: var(--primary-color);
   display: inline-flex;
@@ -57,8 +65,11 @@
 }
 .titlebar-button:hover{
     --titlebar-close-margin: 0px;
+    --titlebar-rotation: 90deg;
+
 }
 .control-button{
+  transform: rotate(var(--titlebar-rotation));
   margin-left: var(--titlebar-close-margin);
   margin-right: var(--titlebar-close-margin);
   transition: all 0.2s;
@@ -78,7 +89,7 @@
   grid-auto-rows: 25px;
 }
 .input{
-    width: 64px;
+    width: 68px;
     font-size: inherit;
     color: inherit;
     background-color: inherit;

@@ -1,34 +1,39 @@
-import {useState} from "react";
-function Settings({settings,setSettings}) {
-    const[localSettings,setLocalSettings]  = useState(settings);
+
+function Settings({settings,setSettings,setSchedule}) {
     function handleInput({target}){
-        if(localSettings[target.name] !== null){
-            setLocalSettings((settings)=>{
-                localSettings[target.name]= target.value;
-                return localSettings;
-            });
+        if(settings[target.name] !== null){
+            let tempSettings = {...settings};
+            tempSettings[target.name] = target.value;
+            if(target.name === "groupName"){
+                localStorage.removeItem("updateDate");
+                localStorage.removeItem("schedule");
+            }
+            setSettings(settings=>
+                ({...tempSettings})
+            );
         }
     }
     return ( <div className="schedule">
         <div>
-            <span>{localSettings.groupName} </span>
-            <input onBlur={handleInput} name="groupName" className="input" defaultValue={localSettings.groupName}></input>
+            <span>Номер группы: </span>
+            <input onBlur={handleInput} name="groupName" className="input" defaultValue={settings.groupName}></input>
         </div>
+
         <div>
             <span>Основной цвет: </span>
-            <input onChange={handleInput} style={{color:localSettings.primaryColor}} name="primaryColor" className="input" defaultValue={localSettings.primaryColor}></input>
+            <input onChange={handleInput} style={{color:settings.primaryColor}} name="primaryColor" className="input" defaultValue={settings.primaryColor}></input>
         </div>
         <div>
             <span>Цвет ЛК: </span>
-            <input onChange={handleInput} name="ЛК" style={{color:localSettings.lessonTypeColors["ЛК"]}} className="input" defaultValue={localSettings.lessonTypeColors["ЛК"]}></input>
+            <input onChange={handleInput} name="ЛК" style={{color:settings["ЛК"]}} className="input" defaultValue={settings["ЛК"]}></input>
         </div>
         <div>
             <span>Цвет ПЗ: </span>
-            <input onChange={handleInput} name="ПЗ" style={{color:localSettings.lessonTypeColors["ПЗ"]}} className="input" defaultValue={localSettings.lessonTypeColors["ПЗ"]}></input>
+            <input onChange={handleInput} name="ПЗ" style={{color:settings["ПЗ"]}} className="input" defaultValue={settings["ПЗ"]}></input>
         </div>
         <div>
             <span>Цвет ЛР: </span>
-            <input onChange={handleInput} name="ЛР" style={{color:localSettings.lessonTypeColors["ЛР"]}} className="input" defaultValue={localSettings.lessonTypeColors["ЛР"]}></input>
+            <input onChange={handleInput} name="ЛР" style={{color:settings["ЛР"]}} className="input" defaultValue={settings["ЛР"]}></input>
         </div>
     </div> );
 }

@@ -1,23 +1,17 @@
-import moment from "moment";
 import {date} from "../constants"
 
 function Body({settings,schedule, currentWeek}) {
-    if(schedule === null){ return (
-      <div></div>);
+    if(schedule === null || Object.keys(schedule.schedules).length === 0){ return (
+      <div className="schedule">Расписания еще нет</div>);
     }
-    const startDate = moment(schedule.startDate,"DD.MM.YYYY").unix();
-    const endDate = moment(schedule.endDate,"DD.MM.YYYY").unix();
-    if(false/*endDate < date.time.unix() < startDate */)
-    return ( <div className="schedule">
-        Начало занятий {schedule.startDate}
-    </div>)
     return (   <div className='schedule'>
       {schedule.schedules[date.weekdays[date.time.weekday()-1]].map((lesson,key)=>{
         if(lesson.weekNumber.includes(currentWeek)){
+          console.log(lesson);
           return (<div key={key} >
             <span>{lesson.subject}</span>
             <span style={{
-              color: settings.lessonTypeColors[lesson.lessonTypeAbbrev]
+              color: settings[lesson.lessonTypeAbbrev]
             }}> ({lesson.lessonTypeAbbrev})</span>
             {lesson.auditories.map(((el,index)=>{
               return <span key={index}> {el} </span>

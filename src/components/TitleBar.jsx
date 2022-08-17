@@ -1,10 +1,9 @@
-import { appWindow } from '@tauri-apps/api/window'
 import Icon from '@mdi/react';
 import {mdiRefresh} from "@mdi/js"
 function TitleBar() {
     return ( <div data-tauri-drag-region className="titlebar">
     <div onClick={()=>{
-        appWindow.minimize();
+        window.location.reload()
     }} className="titlebar-button">
     <div>
         [
