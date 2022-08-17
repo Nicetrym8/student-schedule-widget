@@ -6,12 +6,12 @@ export const date = {
       "Понедельник","Вторник", "Среда", "Четверг","Пятница","Суббота","Воскресенье"
   ]
   }
- export const settings={
+ export const defaultSettings={
+    groupName:'150502',
+    primaryColor: '#7fffd4',
     lessonTypeColors: {
       "ЛК":"#42f548",
       "ПЗ":"#f5c242",
       "ЛР": "#f54242",
-    },
-    groupName:'150502',
-    primaryColor: '#7fffd4',
+    }
   }

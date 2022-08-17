@@ -1,6 +1,6 @@
 import { appWindow } from '@tauri-apps/api/window'
 import Icon from '@mdi/react';
-import {mdiClose} from "@mdi/js"
+import {mdiRefresh} from "@mdi/js"
 function TitleBar() {
     return ( <div data-tauri-drag-region className="titlebar">
     <div onClick={()=>{
@@ -9,7 +9,7 @@ function TitleBar() {
     <div>
         [
     </div>
-    <Icon className="control-button" path={mdiClose} size={0.5}/>
+    <Icon className="control-button" path={mdiRefresh} size={0.5}/>
     <div>
         ]
     </div>

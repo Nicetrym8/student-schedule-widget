@@ -77,7 +77,13 @@
   grid-template-columns: 50% 50%;
   grid-auto-rows: 25px;
 }
-
+.input{
+    width: 64px;
+    font-size: inherit;
+    color: inherit;
+    background-color: inherit;
+    border: none;
+}
 .reveal{
   animation: fadein 1.5s;;
 }

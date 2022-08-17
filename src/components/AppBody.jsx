@@ -1,4 +1,3 @@
-import './App.css';
 import TitleBar from './components/TitleBar';
 import Head from './components/Head'
 import Body from './components/Body'
@@ -8,8 +7,7 @@ import Settings from './components/Settings';
 import {defaultSettings}from "./constants";
 
 
-function App() {
-  
+function AppBody() {
   const [currentWeek,setCurrentWeek] = useState();
   const [schedule,setSchedule] = useState(JSON.parse(localStorage.getItem("schedule")));
   const [settingsMode,setSettingsMode] = useState(0);
@@ -53,7 +51,7 @@ function App() {
       setSettingsMode(1);
     }
     document.body.style.overflow = "hidden";
-  },[settings]);
+  },[schedule,settings]);
   return (
     
       <div className="App reveal">
@@ -67,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppBody;

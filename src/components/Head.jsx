@@ -1,6 +1,6 @@
-import {settings, date} from "../constants"
+import {date} from "../constants"
 
-function Head({setSettingsMode,settingsMode}) {
+function Head({settings,setSettingsMode,settingsMode}) {
     return ( <div className='logo-container'>
     <div onClick={()=>setSettingsMode(!settingsMode)}>
     <svg width="81" height="47" viewBox="0 0 81 47" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,7 @@ function Head({setSettingsMode,settingsMode}) {
     </div>
     <div className="info">
         <span>Последнее обновление: {localStorage.getItem("updateDate")} </span>
-        <span>Группа: {settings.groupName}</span>
+        <span>Группа: {settings !== null ? settings.groupName : ""}</span>
         <span>День: {date.weekdays[date.time.weekday()-1]}</span>
         </div>
     </div> );
