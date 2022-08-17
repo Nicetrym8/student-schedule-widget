@@ -3,7 +3,7 @@ import {mdiRefresh} from "@mdi/js"
 function TitleBar() {
     return ( <div data-tauri-drag-region className="titlebar">
     <div onClick={()=>{
-        window.location.reload()
+        document.location.reload()
     }} className="titlebar-button">
     <div>
         [
