@@ -10,7 +10,7 @@ This project was made with tauri and react.
 ## Building app
  - First of all follow https://tauri.app/v1/guides/getting-started/prerequisites to setup tauri on your system
  - Clone this repo
- - Run `npm run tauri build`
+ - Run `yarn tauri build`
 
 
 
