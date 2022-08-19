@@ -15,6 +15,11 @@
       "iconPath": "icons/icon.ico"
     },
     "allowlist": {
+      "window": {
+        "all":false,
+        "setPosition": true,
+        "startDragging": true
+      },
       "http": {
         "all": false,
         "request": true,

@@ -2,6 +2,7 @@ import './App.css';
 import TitleBar from './components/TitleBar';
 import Head from './components/Head'
 import Body from './components/Body'
+import { appWindow, PhysicalPosition } from '@tauri-apps/api/window';
 import {useEffect, useState} from 'react'
 import axios from 'axios';
 import Settings from './components/Settings';
@@ -14,7 +15,7 @@ function App() {
   const [schedule,setSchedule] = useState(JSON.parse(localStorage.getItem("schedule")));
   const [settings, setSettings] = useState(JSON.parse(localStorage.getItem("settings")));
   useEffect(() => {
-    if(settings !== null){
+    if(settings !== null ){
       
       document.documentElement.style.setProperty('--primary-color', settings.primaryColor);
       axios.get(
@@ -49,13 +50,14 @@ function App() {
       });
       setSettingsMode(1);
     }
+    appWindow.setPosition(new PhysicalPosition(settings.position.x,settings.position.y));
     document.body.style.overflow = "hidden";
   },[settings]);
   return (
     
       <div className="App reveal">
         <header className="App-header ">
-          <TitleBar />
+          <TitleBar settings={settings} setSettings={setSettings}/>
           <Head settings={settings} setSettingsMode={setSettingsMode} settingsMode={settingsMode}/>
           <div className="divider"/>
           {!settingsMode ? <Body settings={settings}  schedule={schedule} currentWeek={currentWeek}/> : <Settings settings={settings} setSettings={setSettings} setSchedule={setSchedule}/>}

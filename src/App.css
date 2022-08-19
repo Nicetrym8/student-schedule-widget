@@ -54,7 +54,6 @@
   right: 0;
 }
 .titlebar-button {
-  --titlebar-rotation: 0deg;
   --titlebar-close-margin: 5px;
   color: var(--primary-color);
   display: inline-flex;
@@ -63,10 +62,14 @@
   width: 50px;
   height: 24px;
 }
+.refresh-button{
+  --titlebar-rotation: 0deg;
+}
+.refresh-button:hover{
+  --titlebar-rotation: 90deg;
+}
 .titlebar-button:hover{
     --titlebar-close-margin: 0px;
-    --titlebar-rotation: 90deg;
-
 }
 .control-button{
   transform: rotate(var(--titlebar-rotation));

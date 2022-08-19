@@ -7,6 +7,10 @@ export const date = {
   ]
   }
  export const defaultSettings={
+    position:{
+        x:648,
+        y:435,
+    },
     groupName:'150502',
     primaryColor: '#7fffd4',
     ЛК:"#42f548",

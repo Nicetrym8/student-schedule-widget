@@ -35,6 +35,10 @@ function Settings({settings,setSettings,setSchedule}) {
             <span>Цвет ЛР: </span>
             <input onChange={handleInput} name="ЛР" style={{color:settings["ЛР"]}} className="input" defaultValue={settings["ЛР"]}></input>
         </div>
+        <div>
+            <span>Цвет ЛР: </span>
+            <input onChange={handleInput} type="" name="ЛР" style={{color:settings["ЛР"]}} className="input" defaultValue={settings["ЛР"]}></input>
+        </div>
     </div> );
 }
 

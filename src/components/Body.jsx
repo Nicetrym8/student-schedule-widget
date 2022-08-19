@@ -7,7 +7,6 @@ function Body({settings,schedule, currentWeek}) {
     return (   <div className='schedule'>
       {schedule.schedules[date.weekdays[date.time.weekday()-1]].map((lesson,key)=>{
         if(lesson.weekNumber.includes(currentWeek)){
-          console.log(lesson);
           return (<div key={key} >
             <span>{lesson.subject}</span>
             <span style={{
