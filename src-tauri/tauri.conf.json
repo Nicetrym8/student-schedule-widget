@@ -15,7 +15,11 @@
       "iconPath": "icons/icon.ico"
     },
     "allowlist": {
-      "all": true
+      "http": {
+        "all": false,
+        "request": true,
+        "scope": ["https://iis.bsuir.by/*"]
+      }
     },
     "bundle": {
       "active": true,
