@@ -21,7 +21,11 @@ function TitleBar({settings,setSettings}) {
     </div>
     </div>
     <div onClick={ async ()=>{
-        const position = await appWindow.innerPosition();
+        const innerPosition = await appWindow.innerPosition();
+        const position = {
+            x: innerPosition.x,
+            y: innerPosition.y
+        }
         setPosition(position);
     }} className="titlebar-button">
     <div>

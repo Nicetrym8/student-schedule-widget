@@ -41,7 +41,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.bsuir.widget",
+      "identifier": "bsuir.widget",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

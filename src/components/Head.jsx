@@ -19,7 +19,7 @@ function Head({settings,setSettingsMode,settingsMode}) {
     <div className="info">
         <span>Последнее обновление: {localStorage.getItem("updateDate")} </span>
         <span>Группа: {settings !== null ? settings.groupName : ""}</span>
-        <span>День: {date.weekdays[date.time.weekday()-1]}</span>
+        <span>День: {date.weekdays[date.time.weekday()]}</span>
         </div>
     </div> );
 }

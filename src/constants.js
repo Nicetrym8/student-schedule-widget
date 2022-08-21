@@ -3,7 +3,7 @@ import moment from "moment"
 export const date = {
     time:moment(new Date()),
     weekdays:[
-      "Понедельник","Вторник", "Среда", "Четверг","Пятница","Суббота","Воскресенье"
+      "Понедельник","Вторник", "Среда", "Четверг","Пятница","Суббота",
   ]
   }
  export const defaultSettings={
